@@ -1,4 +1,9 @@
-<?php include '../../includes/navbar.php'; ?>
+<?php 
+include '../../includes/navbar.php'; 
+include_once '../../controller/userController.php';
+
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +15,13 @@
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
     crossorigin="anonymous">
 </head>
+<style>
+    .img{
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+    }
+</style>
 <body>
     <table class="table">
         <thead>
@@ -19,19 +31,29 @@
                 <th>Name</th>
                 <th>email</th>
                 <th>phone Number</th>
-                <th>view Profile</th>
+                <th>Update</th>
+                <th>Delete</th>
                 <th><a class="btn btn-warning" href='add_user.php'>+</a></th>
             </tr>
         </thead>
         <tbody>
+            <?php 
+            $userController = new UserController\UserController();
+            $users = $userController -> displayAll();
+            ?>
+            <?php if(isset($users)): ?>
+                <?php foreach($users as $u): ?>
             <tr>
-                <td class="row">1</td>
-                <td>image</td>
-                <td>mark otto</td>
-                <td>mark@gmail.com</td>
-                <td>+91 878689978</td>
-                <td><a type="button" class="btn btn-success">View</a></td>
+                <td class="row"><?php echo $u['id']; ?></td>
+                <td><img class="img" src="../../assets/image/<?php echo $u['img_path']; ?>" alt=""></td>
+                <td><?php echo $u['fname']; ?></td>
+                <td><?php echo $u['email']; ?></td>
+                <td><?php echo $u['ph_num']; ?></td>
+                <td><button type="button" class="btn btn-warning">update</button></td>
+                <td><a type="button" class="btn btn-danger">delete</a></td>
             </tr>
+            <?php endforeach?>
+            <?php endif?>
         </tbody>
     </table>
 </body>

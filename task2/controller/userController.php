@@ -1,13 +1,15 @@
 <?php 
 
-namespace userController;
+namespace UserController;
 
 require_once __DIR__ . '/../models/users.php';
 
 use UserModel\User;
 
 class UserController{
-    public function handleRegistration(){
+    
+
+public function handleRegistration(){
         
     $img_name = $_FILES['UploadImage']['name'];
     $tmp_img = $_FILES['UploadImage']['tmp_name'];
@@ -40,8 +42,16 @@ class UserController{
         ":cid" => $cid
     ];
 
-
         $user = new User();
         return $user -> createClient($data);
+    }
+
+    public function displayAll(){
+        $user = new User();
+        return $user -> displayAllUsers();
+    }
+
+    public function update(){
+        $user = new User();
     }
 }

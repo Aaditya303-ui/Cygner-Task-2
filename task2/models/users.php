@@ -37,4 +37,11 @@ class User{
             </script>";
         }
     }
+
+    public function displayAllUsers(){
+        $sql = "SELECT * FROM clients";
+        $stmt = $this -> conn -> prepare($sql);
+        $stmt -> execute();
+        return $stmt -> fetchAll(\PDO::FETCH_ASSOC);
+    }
 }

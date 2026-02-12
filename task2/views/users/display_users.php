@@ -49,7 +49,7 @@ include_once '../../controller/userController.php';
                 <td><?php echo $u['fname']; ?></td>
                 <td><?php echo $u['email']; ?></td>
                 <td><?php echo $u['ph_num']; ?></td>
-                <td><button type="button" class="btn btn-warning">update</button></td>
+                <td><a type="button" href='add_user.php' class="btn btn-warning">update</a></td>
                 <td><a type="button" class="btn btn-danger">delete</a></td>
             </tr>
             <?php endforeach?>

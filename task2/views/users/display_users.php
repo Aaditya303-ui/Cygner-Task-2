@@ -1,6 +1,9 @@
 <?php 
 include '../../includes/navbar.php'; 
 include_once '../../controller/userController.php';
+?>
+
+<?php
 
 ?>
 
@@ -20,6 +23,9 @@ include_once '../../controller/userController.php';
         height: 100px;
         width: 100px;
         border-radius: 50%;
+    }
+    td{
+        align-items: center;
     }
 </style>
 <body>
@@ -49,8 +55,16 @@ include_once '../../controller/userController.php';
                 <td><?php echo $u['fname']; ?></td>
                 <td><?php echo $u['email']; ?></td>
                 <td><?php echo $u['ph_num']; ?></td>
-                <td><a type="button" href='add_user.php' class="btn btn-warning">update</a></td>
-                <td><a type="button" class="btn btn-danger">delete</a></td>
+                <td>
+                    <a type="button" href="update_user.php?q=<?php echo $u['id']; ?>" class="btn btn-warning">
+                        update
+                    </a>
+                    </td>
+                <td>
+                    <a type="button" name="delId" href="delete_user.php?q=<?php echo $u['id']; ?>" class="btn btn-danger">
+                        delete
+                    </a>
+                </td>
             </tr>
             <?php endforeach?>
             <?php endif?>

@@ -20,7 +20,7 @@
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <a class="btn btn-danger " type="submit" href="../logout.php">Logout</a>
+        <a class="btn btn-danger " type="submit" href="/../task_2/task2/logout.php">Logout</a>
       </form>
     </div>
   </nav>

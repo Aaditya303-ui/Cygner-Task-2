@@ -12,13 +12,18 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    if(empty($name)){
+    if(empty($name) && empty($email) && empty($password)){
         $nameErr = "Name is required";
-    }elseif(empty($email)){
         $emailErr = "Email is required";
-    }elseif(empty($password)){
         $passErr = "Password is required";
-    }else{
+    }elseif(empty($name)){
+        $nameErr = "Name is required";
+    }elseif(empty($emailErr)){
+        $emailErr = "Email is required";
+    }elseif(empty($passErr)){
+        $passErr = "Password is required";
+    }
+    else{
         $db = new Database();
         $conn = $db->connect();
 
@@ -38,7 +43,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             ":email" => $email,
             ":password" => $hashedPassword
         ]);
-        header("Location: login.php");
+         echo "
+            <script>
+                alert('Account created successfully login with credentials');
+                window.location.href = '/task_2/task2/login.php'
+            </script>";
         exit();
         }
     }

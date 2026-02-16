@@ -11,7 +11,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    if(empty($email)){
+    if(empty($email) && empty($password)){
+        $emailErr = "Email cant be empty";
+        $passErr = "Password cant be empty";
+    }elseif(empty($email)){
         $emailErr = "Email cant be empty";
     }elseif(empty($password)){
         $passErr = "Password cant be empty";
@@ -28,7 +31,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
             if(password_verify($password,$db_password)){
                 $_SESSION['email'] = $email;
-                header("Location: /Task_2/task2/views/dashboard.php");
+                echo "
+            <script>
+                alert('Login Successfull');
+                window.location.href = '/Task_2/task2/views/dashboard.php'
+            </script>";
                 exit();
             }else{
                 $message = "Incorrect password";
